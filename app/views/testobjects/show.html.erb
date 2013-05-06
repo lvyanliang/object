@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @testobject.name %>
+</p>
+
+<p>
+  <b>Page:</b>
+  <%= @testobject.locate %>
+</p>
+
+<p>
+  <b>Eltype:</b>
+  <%= @testobject.eltype %>
+</p>
+
+<p>
+  <b>How:</b>
+  <%= @testobject.how %>
+</p>
+
+<p>
+  <b>Property:</b>
+  <%= @testobject.property %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%= @testobject.comment %>
+</p>
+
+
+<%= link_to 'Edit', edit_testobject_path(@testobject) %> |
+<%= link_to 'Back', testobjects_path %>

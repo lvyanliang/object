@@ -1,0 +1,41 @@
+<%= form_for(@testobject) do |f| %>
+  <% if @testobject.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@testobject.errors.count, "error") %> prohibited this testobject from being saved:</h2>
+
+      <ul>
+      <% @testobject.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    Name
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+     Page
+    <%= select_tag :locate %>
+  </div>
+  <div class="field">
+    Element Type
+    <%= f.text_field :eltype %>
+  </div>
+  <div class="field">
+    Element parameter:
+    <%= f.text_field :how %>
+  </div>
+  <div class="field">
+    Element param's Value:
+    <%= f.text_field :property %>
+  </div>
+  <div class="field">
+    Description:
+    <%= f.text_field :comment %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

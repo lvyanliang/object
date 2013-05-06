@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  page: MyString
+  eltype: MyString
+  how: MyString
+  property: MyString
+  comment: MyString
+
+two:
+  name: MyString
+  page: MyString
+  eltype: MyString
+  how: MyString
+  property: MyString
+  comment: MyString
