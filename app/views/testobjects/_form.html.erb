@@ -1,3 +1,4 @@
+
 <%= form_for(@testobject) do |f| %>
   <% if @testobject.errors.any? %>
     <div id="error_explanation">
@@ -11,31 +12,63 @@
     </div>
   <% end %>
 
-  <div class="field">
-    Name
+    <div class="control-group">
+    <label class="control-label" for = "testobject_name">Name</label>
+    <div class="controls input-append">
     <%= f.text_field :name %>
+    <span class="add-on">环境_对象功能_对象属性</span>
+
+    </div>
   </div>
-  <div class="field">
-     Page
-    <%= select_tag :locate %>
+  
+  
+  <div class="control-group">
+     <label class="control-label" for="testobject_locate">Locate</label>
+     <div class="controls input-append">
+    <%= f.select :locate, TestobjectsHelper::LOCATE,:prompt=>"选择元素所在页面" %>
+    <div class="add-on">可以为空</div>
+        </div>
   </div>
-  <div class="field">
-    Element Type
-    <%= f.text_field :eltype %>
+  
+  <div class="control-group">
+     <label class="control-label" for="testobject_eltype">Type</label>
+     <div class="controls input-append">
+    <%= f.select :eltype, TestobjectsHelper::ELEMENTS, :prompt => "选择元素类型" %>
+        <div class="add-on">可以为空</div>
+    </div>
   </div>
-  <div class="field">
-    Element parameter:
-    <%= f.text_field :how %>
+
+  <div class="control-group">
+     <label class="control-label" for="testobject_how">Attribute</label>
+     <div class="controls input-append">
+    <%= f.select :how, TestobjectsHelper::ATTRS, :prompt => "选择元素属性"%>
+        <div class="add-on">可以为空</div>
+    </div>
   </div>
-  <div class="field">
-    Element param's Value:
+
+  <div class="control-group">
+     <label class="control-label" for="testobject_property">Value</label>
+     <div class="controls input-append">
     <%= f.text_field :property %>
+    <div class="add-on">必填项</div>
+    </div>
   </div>
-  <div class="field">
-    Description:
+
+  <div class="control-group">
+     <label class="control-label" for="testobject_comment">Description</label>
+     <div class="controls input-append">
     <%= f.text_field :comment %>
+    <div class="add-on">环境_对象功能_对象属性说明</div>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="control-group">
+      <div class="controls">
+          <div class="span1">
+          <input type="submit" class="btn btn-block" value="创建"/> </div>
+          <div class="span1"><input type="reset" value="清空" class="btn"> </div>
+        <div class="span1"> <%= link_to 'Back', testobjects_path %></div>
+    </div>
   </div>
 <% end %>
+

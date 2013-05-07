@@ -19,7 +19,13 @@
 <tbody>
 <% @testobjects.each_with_index do |testobject,id| %>
   <tr>
-      <td><%= testobject.id %></td>
+    <td>
+<% if params[:page] == nil %>
+	<%= id+1 %>
+	<% else %>
+	<%= (params[:page].to_i-1)*10+id+1 %>
+    	<% end %>
+    </td>
     <td><%= best_in_place testobject, :name %></td>
     <td><%= best_in_place testobject, :locate %></td>
     <td><%= best_in_place testobject, :eltype %></td>
