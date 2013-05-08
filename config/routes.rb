@@ -1,6 +1,11 @@
-AutoGomeUtil::Application.routes.draw do
-  resources :testobjects
+AutoGomeUtil::Application.routes.draw do    resources :tasks
 
+  resources :testobjects
+   resources :testcases 
+  resources :teststeps        
+  match 'tcs/:id' => 'tcs#show'
+  
+  match 'tcsp/:id' => 'tcsp#show'      
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
