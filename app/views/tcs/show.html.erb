@@ -1,0 +1,29 @@
+
+<br/>
+
+<h3><%= @task.name%></h3>
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Browser</th>
+        <th>RunFlag</th>
+        <th>CaptureFlag</th>
+        <th>Action</th>
+    </tr>
+    <% if @tcs != nil%>
+    <% @tcs.each do |tc|%>
+    <tr>
+        <td><%= best_in_place tc, :name%></td>
+        <td><%= best_in_place tc, :description%></td>
+        <td><%= best_in_place tc, :browser, type: :select, collection:[["ff","Firefox"],["chrome","Chrome"],["ie","Internet Explorer"]] %></td>
+        <td><%= best_in_place tc, :runFlag, type: :select, collection: [["Y","run"],["N","not run"]]%></td>
+        <td><%= best_in_place tc, :capture, type: :select, collection: [["Y","capture"],["N", "not capture"]]%></td>
+        <td><a href = "/tcsp/<%= tc.id%>">Show</td>
+    </tr>
+    <%end%>
+    <%end%> 
+</table>
+        
+<br/>
