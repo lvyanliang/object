@@ -1,36 +1,37 @@
 </br>
 
 <div class="container">
-<div class = "span4">
-<h2><%= @tc.name%></h2>
+<div class = "span6 kaiti" style="font-size:26px">
+<%= @tc.description%>
 </div>
-<div class= "span4 offset8" style="text-align: right; font-family: Times New Roman; font-size: 15px;">
-    <a href = "/tasks">Back</a>
+<div class= "span4 offset1 kaiti"  style="font-size: 18px; text-align: right;">
+    <a href="/">添加步骤</a>
+    <a href = "/tasks">返回</a>
 </div>
 </div>
-
+<br/>
 <table class="table">
-    <tr>
-        <th>Id</th>
-        <th>Description</th>
-        <th>TypeMethod</th>
-        <th>Element</th>
-        <th>CallMethod</th>
-        <th>InputValue</th>
-        <th>ExpectValue</th>
-        <th>RunFlag</th>
+    <tr class="kaiti">
+        <th>编号</th>
+        <th>步骤描述</th>
+        <th>操作类型</th>
+        <th>元素名称</th>
+        <th>调用方法</th>
+        <th>输入</th>
+        <th>输出</th>
+        <th>是否运行</th>
     </tr>
     <% if @steps != nil%>
         <%@steps.each do |sp|%>
                 <tr>
                     <td><%= best_in_place sp, :step%></td>
-                    <td><%= best_in_place sp, :stepDesc%></td>
+                    <td class="kaiti"><%= best_in_place sp, :stepDesc%></td>
                     <td><%= best_in_place sp, :stepMethod, type: :select, collection:[["ACTION","action"],["VERIFICATION","verification"],["CUSACTION","custom-action"],["CUSVERIFY","custom-verification"]]%></td>
                     <td><%= best_in_place sp, :objName%></td>
                     <td><%= best_in_place sp, :callMethod%></td>
-                    <td><%= best_in_place sp, :inputValue%></td>
+                    <td><%= best_in_place sp, :inputValue %></td>
                     <td><%= best_in_place sp, :expectValue%></td>
-                    <td><%= best_in_place sp, :runFlag, type: :select, collection: [["Y","run"],["N","not run"]]%></td>
+                    <td class="kaiti"><%= best_in_place sp, :runFlag, type: :select, collection: [["Y","运行"],["N","不运行"]]%></td>
                 </tr>
         <%end%>
     <%end%>

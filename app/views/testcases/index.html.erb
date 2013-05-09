@@ -1,31 +1,39 @@
-<h1>Listing testcases</h1>
+<h1>
+    <div class="container" >
+        <div class="span6  kaiti" style="font-size: 26px" >
+           全部测试用例
+        </div>
+       <div class="span4 offset1 kaiti"  style="font-size: 18px; text-align: right;">
+        <%= link_to '创建新用例', new_testcase_path %>
+     </div>  
+    </div>
+</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Browser</th>
-    <th>Runflag</th>
-    <th>Capture</th>
-    <th></th>
-    <th></th>
-    <th></th>
+<table class="table">
+  <tr class="kaiti">
+    <th class=" text-center">用例名称</th>
+    <th class=" text-center">用例描述</th>
+    <th class=" text-center">使用浏览器</th>
+    <th class=" text-center">是否运行</th>
+    <th class=" text-center">是否截图</th>
+    <th class=" text-center">可执行动作</th>
+    <th class=" text-center">所属项目</th>
   </tr>
 
-<% @testcases.each do |testcase| %>
+
+<% @testcases.each_with_index do |testcase,id| %>
   <tr>
-    <td><%= testcase.name %></td>
-    <td><%= testcase.description %></td>
-    <td><%= testcase.browser %></td>
-    <td><%= testcase.runFlag %></td>
-    <td><%= testcase.capture %></td>
-    <td><%= link_to 'Show', testcase %></td>
-    <td><%= link_to 'Edit', edit_testcase_path(testcase) %></td>
-    <td><%= link_to 'Destroy', testcase, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class=" text-center"><%= best_in_place testcase, :name%></td>
+        <td class="kaiti text-center"><%= best_in_place testcase, :description%></td>
+        <td class=" text-center"><%= best_in_place testcase, :browser, type: :select, collection:[["ff","Firefox"],["chrome","Chrome"],["ie","Internet Explorer"]] %></td>
+        <td class="kaiti text-center" ><%= best_in_place testcase, :runFlag, type: :select, collection: [["Y","运行"],["N","不运行"]]%></td>
+        <td class="kaiti text-center"><%= best_in_place testcase, :capture, type: :select, collection: [["Y","截图"],["N", "不截图"]]%></td>
+
+
+        <td class="kaiti text-center"><%= link_to '删除', testcase, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td  class="kaiti text-center"><%= @tktcs[id]%></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New Testcase', new_testcase_path %>

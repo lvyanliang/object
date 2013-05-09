@@ -1,27 +1,31 @@
-<h1>Listing tasks</h1>
+<h1 style="font-family: KaiTi">
+    <div class="container">
+        <div class="span6">
+    测试任务列表
+    </div>
+    <div class="span4 offset1" style="font-size: 18px; text-align: right;">
+        <%= link_to '创建新任务', new_task_path %>
+     </div>
+    </div>
+ </h1>
 
 <table class="table">
   <tr>
-    <th>Name</th>
-    <th>Runmachine</th>
-    <th>Runtime</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th >任务描述</th>
+    <th>运行机器地址</th>
+    <th>运行时间</th>
+    <th colspan="2" style="text-align: center"> 可执行操作</th>
   </tr>
 
 <% @tasks.each do |task| %>
   <tr>
-    <td><%= best_in_place task, :name %></td>
+    <td   class="kaiti"><%= best_in_place task, :name %></td>
     <td><%= best_in_place task, :runmachine %></td>
     <td><%= task.runtime.strftime("%H:%M:%S") %></td>
-    <td><a href = "/tcs/<%= task.id %>">Show</a></td>
-    <td><%= link_to 'Edit', edit_task_path(task) %></td>
-    <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td  class="kaiti"><a href = "/tcs/<%= task.id %>">展示全部关联用例</a></td>
+    <td  style="font-family: KaiTi"><%= link_to '删除当前任务', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New Task', new_task_path %>

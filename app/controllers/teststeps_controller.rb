@@ -11,4 +11,10 @@ class TeststepsController < ApplicationController
           @teststep.update_attributes(params[:teststep])
           respond_with @teststep
   end
+  
+  def destroy
+                
+  end
+  
+  
 end

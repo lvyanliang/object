@@ -3,7 +3,18 @@ class TestcasesController < ApplicationController
   # GET /testcases.json
   def index
     @testcases = Testcase.all
-
+     @tktcs = []
+     @testcases.each do |tc|
+             rls  = Runlist.where(["testcaseid=?", tc.id])
+             begin 
+                     @tktcs << Task.where(["id=?",rls.first.taskid]).first.name
+             rescue StandardError
+                     @tktcs << "-"
+             end
+             
+     end
+     
+     
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @testcases }
@@ -14,7 +25,6 @@ class TestcasesController < ApplicationController
   # GET /testcases/1.json
   def show
     @testcase = Testcase.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @testcase }
