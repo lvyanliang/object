@@ -1,2 +1,96 @@
-<h1>Tcsp#new</h1>
-<p>Find me in app/views/tcsp/new.html.erb</p>
+
+<%= form_for(@teststep) do |f| %>
+  <% if @teststep.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@teststep.errors.count, "error") %> prohibited this testobject from being saved:</h2>
+
+      <ul>
+      <% @teststep.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="container">
+    <div class="span8 kaiti text-info" style="font-size: 26px">
+        添加当前用例的测试步骤
+    </div>
+</div>
+
+ <br/><br/>
+      <div class="span8">
+    <div class="control-group kaiti">
+    <label class="control-label large" for = "testobject_name ">步骤描述</label>
+    <div class="controls input-append">
+    <%= f.text_field :stepDesc%>
+    <span class="add-on "></span>
+    </div>
+  </div>
+  
+      <div class="control-group kaiti">
+    <label class="control-label large" for = "testobject_name ">操作类型</label>
+    <div class="controls input-append">
+    <%= f.text_field :stepMethod%>
+    <span class="add-on "></span>
+    </div>
+  </div>
+  
+      <div class="control-group kaiti">
+    <label class="control-label large" for = "testobject_name ">元素名称</label>
+    <div class="controls input-append">
+    <%= f.text_field :objName%>
+    <span class="add-on "></span>
+    </div>
+  </div>
+  
+      <div class="control-group kaiti">
+    <label class="control-label large" for = "testobject_name ">调用方法</label>
+    <div class="controls input-append">
+    <%= f.text_field :callMethod%>
+    <span class="add-on "></span>
+    </div>
+  </div>
+  
+      <div class="control-group kaiti">
+    <label class="control-label large" for = "testobject_name ">输入</label>
+    <div class="controls input-append">
+    <%= f.text_field :inputValue%>
+    <span class="add-on "></span>
+    </div>
+  </div>
+  
+      <div class="control-group kaiti">
+    <label class="control-label large" for = "testobject_name ">预期结果</label>
+    <div class="controls input-append">
+    <%= f.text_field :expectValue%>
+    <span class="add-on "></span>
+    </div>
+  </div>
+  
+       <div class="control-group kaiti">
+    <label class="control-label large" for = "testobject_name ">运行状态</label>
+    <div class="controls input-append">
+    <%= f.select :runFlag, [["运行","Y"], ["不运行","N"]] %>
+    <span class="add-on "></span>
+    </div>
+        </div>
+  
+  <div class="control-group">
+      <div class="controls">
+          <div class="span1">
+          <input type="submit" class="btn btn-block kaiti" value="创建"/> </div>
+          <div class="span1"><input type="reset" value="清空" class="btn kaiti"> </div>
+        <div class="span1 kaiti"> <%= link_to '返回', testobjects_path %></div>
+    </div>
+  </div>
+  </div>
+  <div class="span4">
+        <div class="span8 kaiti text-warning" style="font-size: 18px">
+        注释：
+    </div>
+    <hr/>
+    <br/>
+
+  </div>
+<% end %>

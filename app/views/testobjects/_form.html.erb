@@ -11,64 +11,78 @@
       </ul>
     </div>
   <% end %>
-
-    <div class="control-group">
-    <label class="control-label" for = "testobject_name">Name</label>
+  
+<div class="container">
+    <div class="span8 kaiti text-info" style="font-size: 26px">
+        添加新的页面元素对象
+    </div>
+</div>
+      <br/><br/>
+      <div class="span8">
+    <div class="control-group kaiti">
+    <label class="control-label large" for = "testobject_name ">元素名称</label>
     <div class="controls input-append">
     <%= f.text_field :name %>
-    <span class="add-on">环境_对象功能_对象属性</span>
-
+    <span class="add-on ">环境_对象功能_对象属性</span>
     </div>
   </div>
   
-  
-  <div class="control-group">
-     <label class="control-label" for="testobject_locate">Locate</label>
+  <div class="control-group kaiti ">
+     <label class="control-label large" for="testobject_locate">元素所在页面</label>
      <div class="controls input-append">
     <%= f.select :locate, TestobjectsHelper::LOCATE,:prompt=>"选择元素所在页面" %>
-    <div class="add-on">可以为空</div>
+    <div class="add-on  ">可以为空</div>
         </div>
   </div>
   
-  <div class="control-group">
-     <label class="control-label" for="testobject_eltype">Type</label>
-     <div class="controls input-append">
-    <%= f.select :eltype, TestobjectsHelper::ELEMENTS, :prompt => "选择元素类型" %>
-        <div class="add-on">可以为空</div>
+  <div class="control-group kaiti">
+     <label class="control-label large" for="testobject_eltype ">元素类型</label>
+     <div class="controls input-append ">
+    <%= f.select :eltype, TestobjectsHelper::ELEMENTS, :prompt => "选择元素类型" , :class=>"kaiti"%>
+        <div class="add-on ">可以为空</div>
     </div>
   </div>
 
-  <div class="control-group">
-     <label class="control-label" for="testobject_how">Attribute</label>
-     <div class="controls input-append">
+  <div class="control-group kaiti">
+     <label class="control-label large" for="testobject_how ">元素属性</label>
+     <div class="controls input-append kaiti">
     <%= f.select :how, TestobjectsHelper::ATTRS, :prompt => "选择元素属性"%>
-        <div class="add-on">可以为空</div>
+        <div class="add-on ">可以为空</div>
     </div>
   </div>
 
-  <div class="control-group">
-     <label class="control-label" for="testobject_property">Value</label>
+  <div class="control-group kaiti">
+     <label class="control-label large" for="testobject_property">属性值</label>
      <div class="controls input-append">
     <%= f.text_field :property %>
     <div class="add-on">必填项</div>
     </div>
   </div>
 
-  <div class="control-group">
-     <label class="control-label" for="testobject_comment">Description</label>
+  <div class="control-group kaiti">
+     <label class="control-label large" for="testobject_comment ">元素描述</label>
      <div class="controls input-append">
     <%= f.text_field :comment %>
-    <div class="add-on">环境_对象功能_对象属性说明</div>
+    <div class="add-on ">环境_对象功能_对象属性说明</div>
     </div>
   </div>
 
   <div class="control-group">
       <div class="controls">
           <div class="span1">
-          <input type="submit" class="btn btn-block" value="创建"/> </div>
-          <div class="span1"><input type="reset" value="清空" class="btn"> </div>
-        <div class="span1"> <%= link_to 'Back', testobjects_path %></div>
+          <input type="submit" class="btn btn-block kaiti" value="创建"/> </div>
+          <div class="span1"><input type="reset" value="清空" class="btn kaiti"> </div>
+        <div class="span1 kaiti"> <%= link_to '返回', testobjects_path %></div>
     </div>
+  </div>
+  </div>
+  <div class="span4">
+        <div class="span8 kaiti text-warning" style="font-size: 18px">
+        注释：
+    </div>
+    <hr/>
+    <br/>
+
   </div>
 <% end %>
 

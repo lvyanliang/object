@@ -11,19 +11,49 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
+    <div class="container">
+        <div class="span8 kaiti text-info" style="font-size:26px">
+            添加新任务
+        </div>
+    </div>
+
+    <br/><br/>
+      <div class="span8">
+    <div class="control-group kaiti">
+    <label class="control-label large" for = "testobject_name ">任务名称</label>
+    <div class="controls input-append">
     <%= f.text_field :name %>
+    <span class="add-on ">必填项</span>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :runmachine %><br />
+  
+      <div class="control-group kaiti">
+    <label class="control-label large" for = "testobject_name ">运行机器</label>
+    <div class="controls input-append">
     <%= f.text_field :runmachine %>
+    <span class="add-on ">必填项</span>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :runtime %><br />
+  
+  <div class="control-group kaiti">
+    <label class="control-label large" for = "testobject_name ">运行时间</label>
+    <div class="controls input-append">
     <%= f.time_select :runtime %>
+    <span class="add-on ">必填项</span>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  
+    <div class="control-group">
+      <div class="controls">
+          <div class="span1">
+          <input type="submit" class="btn btn-block kaiti" value="创建"/> </div>
+          <div class="span1"><input type="reset" value="清空" class="btn kaiti"> </div>
+        <div class="span1 kaiti"> <%= link_to '返回', tasks_path %></div>
+    </div>
   </div>
+  </div>
+  
+  
+  </div>
+  
 <% end %>

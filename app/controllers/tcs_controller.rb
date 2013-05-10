@@ -2,6 +2,7 @@ class TcsController < ApplicationController
         
         def show
                 @task = Task.where("id = #{params[:id]}")
+                session[:taskid] = params[:id]
                 @runlists = Runlist.where("taskid = #{params[:id]}")
                 @tcs = []
                 @runlists.each do |rl|

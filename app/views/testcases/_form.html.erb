@@ -11,27 +11,74 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
+<div class="container">
+    <div class="span8 kaiti text-info" style="font-size: 26px">
+        创建新用例
+    </div>
+</div>
+
+      <br/><br/>
+      <div class="span8">
+    <div class="control-group kaiti">
+    <label class="control-label large" for = "testobject_name ">测试用例名称</label>
+    <div class="controls input-append">
     <%= f.text_field :name %>
+    <span class="add-on ">必填项</span>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :description %><br />
+
+
+    <div class="control-group kaiti">
+    <label class="control-label large" for = "testobject_name ">测试用例描述</label>
+    <div class="controls input-append">
     <%= f.text_field :description %>
+    <span class="add-on ">必填项</span>
+    </div>
+
+    <div class="control-group kaiti">
+    <label class="control-label large" for = "testobject_name ">测试浏览器选择</label>
+    <div class="controls input-append">
+    <%= f.select :browser, [["Firefox","ff"],["Internet Explorer","ie"], ["Chrome","chrome"]] %>
+    <span class="add-on "></span>
+    </div>
+    </div>
+    
+     <div class="control-group kaiti">
+    <label class="control-label large" for = "testobject_name ">运行状态</label>
+    <div class="controls input-append">
+    <%= f.select :runFlag, [["运行","Y"], ["不运行","N"]] %>
+    <span class="add-on "></span>
+    </div>
+        </div>
+
+     <div class="control-group kaiti">
+    <label class="control-label large" for = "testobject_name ">截图状态</label>
+    <div class="controls input-append">
+    <%= f.select :capture, [["运行","Y"], ["不运行","N"]]  %>
+    <span class="add-on "></span>
+    </div>
+     </div>
+
+    <% runlist = Runlist.new%>
+    <div class="control-group kaiti">
+     <label class="control-label large" for = "testobject_name ">所属任务</label>
+    <div class="controls input-append">
+    <%= select_tag  runlist.taskid, options_for_select(sl_task_reverse) %>
+    <span class="add-on "></span>
+    </div>
+    </div>
+
+
+      <div class="control-group">
+      <div class="controls">
+          <div class="span1">
+          <input type="submit" class="btn btn-block kaiti" value="创建"/> </div>
+          <div class="span1"><input type="reset" value="清空" class="btn kaiti"> </div>
+        <div class="span1 kaiti"> <%= link_to '返回', testobjects_path %></div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :browser %><br />
-    <%= f.text_field :browser %>
+     
+    
   </div>
-  <div class="field">
-    <%= f.label :runFlag %><br />
-    <%= f.text_field :runFlag %>
-  </div>
-  <div class="field">
-    <%= f.label :capture %><br />
-    <%= f.text_field :capture %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+  
+ <% end %>

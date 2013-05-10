@@ -2,7 +2,7 @@ class TestobjectsController < ApplicationController
   # GET /testobjects
   # GET /testobjects.json
   def index
-    @testobjects = Testobject.page(params[:page]).per(15)
+    @testobjects = Testobject.page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # index.html.erb

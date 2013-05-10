@@ -5,8 +5,8 @@
 <%= @tc.description%>
 </div>
 <div class= "span4 offset1 kaiti"  style="font-size: 18px; text-align: right;">
-    <a href="/">添加步骤</a>
-    <a href = "/tasks">返回</a>
+    <%= link_to "添加步骤", tcsp_new_path%>
+    <a href = "/tcs/<%=session[:taskid] == nil ? 1 : session[:taskid] %>">返回</a>
 </div>
 </div>
 <br/>

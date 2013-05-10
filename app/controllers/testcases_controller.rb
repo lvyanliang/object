@@ -3,6 +3,7 @@ class TestcasesController < ApplicationController
   # GET /testcases.json
   def index
     @testcases = Testcase.all
+ 
      @tktcs = []
      @testcases.each do |tc|
              rls  = Runlist.where(["testcaseid=?", tc.id])
@@ -11,9 +12,7 @@ class TestcasesController < ApplicationController
              rescue StandardError
                      @tktcs << "-"
              end
-             
      end
-     
      
     respond_to do |format|
       format.html # index.html.erb
@@ -51,9 +50,12 @@ class TestcasesController < ApplicationController
   # POST /testcases.json
   def create
     @testcase = Testcase.new(params[:testcase])
+        @runlist = Runlist.new(params[:runlist])
 
     respond_to do |format|
       if @testcase.save
+        @runlist.testcaseid = @testcase.id
+        @runlist.save
         format.html { redirect_to @testcase, notice: 'Testcase was successfully created.' }
         format.json { render json: @testcase, status: :created, location: @testcase }
       else
@@ -83,7 +85,10 @@ class TestcasesController < ApplicationController
   # DELETE /testcases/1.json
   def destroy
     @testcase = Testcase.find(params[:id])
+    
     @testcase.destroy
+    
+    Teststep.destroy_all("teststeps.testcaseName = '#{@testcase.name}'")
 
     respond_to do |format|
       format.html { redirect_to testcases_url }

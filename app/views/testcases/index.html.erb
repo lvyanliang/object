@@ -16,11 +16,10 @@
     <th class=" text-center">使用浏览器</th>
     <th class=" text-center">是否运行</th>
     <th class=" text-center">是否截图</th>
-    <th class=" text-center">可执行动作</th>
+    <th colspan="2" class=" text-center">可执行动作</th>
     <th class=" text-center">所属项目</th>
   </tr>
-
-
+        <% @re = sl_task %>
 <% @testcases.each_with_index do |testcase,id| %>
   <tr>
         <td class=" text-center"><%= best_in_place testcase, :name%></td>
@@ -28,10 +27,11 @@
         <td class=" text-center"><%= best_in_place testcase, :browser, type: :select, collection:[["ff","Firefox"],["chrome","Chrome"],["ie","Internet Explorer"]] %></td>
         <td class="kaiti text-center" ><%= best_in_place testcase, :runFlag, type: :select, collection: [["Y","运行"],["N","不运行"]]%></td>
         <td class="kaiti text-center"><%= best_in_place testcase, :capture, type: :select, collection: [["Y","截图"],["N", "不截图"]]%></td>
-
-
         <td class="kaiti text-center"><%= link_to '删除', testcase, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td  class="kaiti text-center"><%= @tktcs[id]%></td>
+        <td  class="kaiti"><a href = "/tcsp/<%= testcase.id%>">查看用例步骤</td>
+        <% @runlist = get_rl(testcase.id).first%>
+        <td class="kaiti"><%= best_in_place @runlist, :taskid, :type=>:select, :collection => @re %></td>
+
   </tr>
 <% end %>
 </table>
