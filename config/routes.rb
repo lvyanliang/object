@@ -1,12 +1,23 @@
-AutoGomeUtil::Application.routes.draw do    resources :tasks
+AutoGomeUtil::Application.routes.draw do
+  
+  resources :tasks
 
   resources :testobjects
-   resources :testcases 
-  resources :teststeps        
+ 
+  resources :testcases
+ 
+  resources :teststeps       
+ 
   match 'tcs/:id' => 'tcs#show'
   
-  match 'tcsp/:id' => 'tcsp#show'      
-
+  # get 'tcsp/:id' => 'tcsp#show' 
+  # post 'tcsp/:id' => 'tcsp#create'
+#   
+  # get 'tcsp/new' => 'tcsp#new'
+  
+  resources :tcsp
+   resources :runlists
+   
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -56,7 +67,7 @@ AutoGomeUtil::Application.routes.draw do    resources :tasks
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'testobjects#index'
+  root :to => 'tasks#index'
 
   # See how all your routes lay out with "rake routes"
 
