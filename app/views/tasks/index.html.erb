@@ -2,33 +2,51 @@
     <div class="container">
         <div class="span6">
                     <div class="span6  kaiti" style="font-size: 26px" >
-
     测试任务列表
+    
     </div>
     </div>
     <div class="span4 offset1" style="font-size: 18px; text-align: right;">
         <%= link_to '创建新任务', new_task_path %>
+        <%= link_to "检测机器状态", check_machine_path%>
      </div>
     </div>
  </h1>
+
+
 
 <table class="table">
   <tr>
     <th >任务描述</th>
     <th>运行机器地址</th>
     <th>运行时间</th>
-    <th colspan="2" style="text-align: center"> 可执行操作</th>
+    <th>机器状态</th>
+    <th colspan="3" style="text-align: center"> 可执行操作</th>
   </tr>
 
 <% @tasks.each do |task| %>
   <tr>
     <td   class="kaiti"><%= best_in_place task, :name %></td>
     <td><%= best_in_place task, :runmachine %></td>
-    <td><%= task.runtime.strftime("%H:%M:%S") %></td>
-    <td  class="kaiti"><a href = "/tcs/<%= task.id %>">展示全部关联用例</a></td>
+    <td><%= best_in_place task, :runtime, :display_with=>lambda {|v| v.strftime("%H:%M:%S")} %></td>
+     <td><%= session[task.runmachine].nil? ? "Unchecked" : (session[task.runmachine].include?("PONG") ? "Online" : "Offline")%></td>
+    <td  class="kaiti"><%= link_to "展示关联用例", task_testcases_path(task)%></td>
     <td  style="font-family: KaiTi"><%= link_to '删除当前任务', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% if session[task.runmachine].nil? %>
+    <td class="kaiti">需要先检测机器连接状态</td>
+    <% elsif session[task.runmachine].include?("PONG")%>
+    <td class ="kaiti">
+        <a href="/run_refer/<%= task.id%>">运行该任务</a>
+    </td>
+    <%else%>
+    <td class="kaiti">需要开启指定机器的STAF</td>
+    <%end%>
   </tr>
 <% end %>
 </table>
-
+<h1 style="font-family: Kaiti">
+    <div class="span5 offset6" style="font-size: 18px; text-align: right;">
+        <%= link_to '全部运行', run_path %>
+     </div>
+</h1>
 <br />

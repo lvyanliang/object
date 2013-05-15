@@ -1,0 +1,39 @@
+<h1 style="font-family: KaiTi">
+    <div class="container">
+        <div class="span6">
+                <div class="span6  kaiti" style="font-size: 26px" >
+        <%= @testcase.name%>任务测试结果
+    </div>
+    </div>
+    </div>
+</h1>
+
+<table class="table">
+    <tr>
+        <th>运行次数</th>
+        <th>结果</th>
+        <th>运行时间</th>
+        <th>可执行操作</th>
+    </tr>
+   
+<% if @results.first.nil?%>
+    <tr class="kaiti"><td  colspan="3" >该用例未运行过</td></tr>
+    <%else%>
+        <% @results.each do |result|%>
+        <tr>
+            <td>
+                <%= result.counter%>
+            </td>
+            <td>
+                <%= result.result%>
+            </td>
+            <td>
+                <%= result.finishtime%>
+            </td>
+            <td class="kaiti">
+                <a href = "/show/tcrp/<%= @testcase.id%>/counter/<%= result.counter%>">查看详情</a>
+            </td>
+        </tr>
+        <%end%>
+<%end%>
+</table>

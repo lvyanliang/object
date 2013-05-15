@@ -1,0 +1,38 @@
+
+<h1>
+    <div class="container" >
+        <div class="span6  kaiti" style="font-size: 26px" >
+            <%= @task.name%>
+        </div>
+       <div class="span4 offset1 kaiti"  style="font-size: 18px; text-align: right;">
+        <%= link_to '创建新用例', new_task_testcase_path %>
+        <%= link_to_function "返回", "history.back()", :style=>"font-size:16px"%>
+     </div>  
+    </div>
+</h1>
+
+
+<table class="table">
+    <tr>
+        <th>用例名称</th>
+        <th>用例描述</th>
+        <th>使用浏览器</th>
+        <th>是否运行</th>
+        <th>是否截图</th>
+        <th>可执行动作</th>
+    </tr>
+    <% if @tcs != nil%>
+    <% @tcs.each do |tc|%>
+    <tr>
+        <td><%= best_in_place tc, :name%></td>
+        <td class="kaiti"><%= best_in_place tc, :description%></td>
+        <td><%= best_in_place tc, :browser, type: :select, collection:[["ff","Firefox"],["chrome","Chrome"],["ie","Internet Explorer"]] %></td>
+        <td class="kaiti"><%= best_in_place tc, :runFlag, type: :select, collection: [["Y","运行"],["N","不运行"]]%></td>
+        <td class="kaiti"><%= best_in_place tc, :capture, type: :select, collection: [["Y","截图"],["N", "不截图"]]%></td>
+        <td  class="kaiti"><%= link_to "查看用例步骤",task_testcase_teststeps_path(@task,tc) %></td>
+    </tr>
+    <%end%>
+    <%end%> 
+</table>
+        
+<br/>

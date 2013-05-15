@@ -21,6 +21,15 @@ class TcspController < ApplicationController
         session[:testcaseid] = params[:id]
   end
 
+  def index 
+        
+        @tc = Testcase.find(params[:testcase_id])
+        
+        @steps = Teststep.order(:step).where("testCaseName='#{@tc.name}'")
+        
+        session[:testcaseid] = params[:testcase_id]
+        
+  end
 
 
   def delete

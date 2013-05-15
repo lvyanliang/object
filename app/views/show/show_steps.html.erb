@@ -1,0 +1,38 @@
+<h1 style="font-family: KaiTi">
+    <div class="container">
+        <div class="span6">
+                <div class="span6  kaiti" style="font-size: 26px" >
+       <%= @testcase.name%> ：第<%= params[:id]%>次任务测试结果
+    </div>
+    </div>
+    </div>
+</h1>
+
+
+<table class="table">
+    
+    <tr>
+        <th>步骤编号</th>
+        <th>运行时间</th>
+        <th>步骤说明</th>
+        <th>预期结果</th>
+        <th>实际结果</th>
+        <th>步骤结果</th>
+    </tr>
+    
+    <% if @results.first.nil? %>
+        <tr><td class="kaiti" colspan="6">此次没有运行步骤</td></tr>
+        <%else%>
+        <% @results.each do |result| %> 
+        <tr>
+            <td><%= result.teststep_id%></td>
+            <td><%= result.runtime.strftime("%F  %H:%M:%S")%></td>
+            <td class="kaiti"><%= @teststeps[result.teststep_id].stepDesc%></td>
+            <td><%= @teststeps[result.teststep_id].expectValue%></td>
+            <td><%= result.actualvalue%></td>
+            <td><%= result.result%></td>
+        </tr>
+        <% end %>
+    <%end%>
+    
+</table>

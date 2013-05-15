@@ -30,7 +30,7 @@
         <td class="kaiti text-center"><%= link_to '删除', testcase, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td  class="kaiti"><a href = "/tcsp/<%= testcase.id%>">查看用例步骤</td>
         <% @runlist = get_rl(testcase.id).first%>
-        <td class="kaiti"><%= best_in_place @runlist, :taskid, :type=>:select, :collection => @re %></td>
+        <td class="kaiti"><%= best_in_place @runlist, :task_id, :type=>:select, :collection => @re %></td>
 
   </tr>
 <% end %>

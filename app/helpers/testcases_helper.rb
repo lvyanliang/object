@@ -3,7 +3,7 @@
 module TestcasesHelper
         
         def get_rl(opt)
-                return Runlist.where("testcaseid = #{opt}")
+                return Runlist.where("testcase_id = #{opt}")
         end
         
         def  sl_task

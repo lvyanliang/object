@@ -6,9 +6,9 @@ class TestcasesController < ApplicationController
  
      @tktcs = []
      @testcases.each do |tc|
-             rls  = Runlist.where(["testcaseid=?", tc.id])
+             rls  = Runlist.where(["testcase_id=?", tc.id])
              begin 
-                     @tktcs << Task.where(["id=?",rls.first.taskid]).first.name
+                     @tktcs << Task.where(["id=?",rls.first.task_id]).first.name
              rescue StandardError
                      @tktcs << "-"
              end

@@ -1,4 +1,4 @@
-<%= form_for(@testcase) do |f| %>
+<%= form_for @testcase, :url =>task_testcases_path(session[:taskid]) do |f| %>
   <% if @testcase.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@testcase.errors.count, "error") %> prohibited this testcase from being saved:</h2>
@@ -58,16 +58,6 @@
     <span class="add-on "></span>
     </div>
      </div>
-
-    <% runlist = Runlist.new%>
-    <div class="control-group kaiti">
-     <label class="control-label large" for = "testobject_name ">所属任务</label>
-    <div class="controls input-append">
-    <%= select_tag  runlist.task_id, options_for_select(sl_task_reverse) %>
-    <span class="add-on "></span>
-    </div>
-    </div>
-
 
       <div class="control-group">
       <div class="controls">

@@ -33,13 +33,13 @@
     <td><%= best_in_place testobject, :locate %></td>
     <td><%= best_in_place testobject, :eltype %></td>
     <td><%= best_in_place testobject,:how %></td>
-    <td><%= best_in_place testobject,:property %></td>
+    <td><%= best_in_place testobject,:property, :display_with=>lambda{|v| v.truncate(50)} %></td>
     <td style="font-family: KaiTi"><%= best_in_place testobject,:comment %></td>
     <td class="kaiti"><%= link_to '删除', testobject, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
-  <div class="span4 offset8"><%= paginate @testobjects %></div>
+  <div class="span6 offset6" style="text-align: right"><%= paginate @testobjects %></div>
 <br />
 
 

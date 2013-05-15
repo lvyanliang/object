@@ -1,0 +1,30 @@
+<h1 style="font-family: KaiTi">
+    <div class="container">
+        <div class="span6">
+                <div class="span6  kaiti" style="font-size: 26px" >
+        显示当前任务测试结果
+    </div>
+    </div>
+    </div>
+</h1>
+
+<% @tasks.each do |task| %>
+    <table class="table">
+        <% show_task_relative_result(task)%>
+        <tr><th colspan="3">任务名称：<%= task.name%></th>
+            <th>第<%= task.counter%>次 运行</th>
+        </tr>
+        <% if !@testcases.nil? %>
+                <% @testcases.each_with_index do |testcase, id|%>
+                    <tr>
+                        <td><%= testcase.name%></td>
+                        <td class="kaiti"><%= testcase.description%></td>
+                        <td class="kaiti"><%= @results[id].nil? ? "上一次未运行该用例" : @results[id].result%></td>
+                        <td class="kaiti">
+                            <a href="/show/tcrp/<%= testcase.id %>">查看全部运行结果</a>
+                        </td>
+                    </tr>
+                <% end%>
+        <%end%>
+    </table>
+<%end%>

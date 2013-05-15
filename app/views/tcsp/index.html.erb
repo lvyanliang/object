@@ -1,0 +1,39 @@
+</br>
+
+<div class="container">
+<div class = "span6 kaiti" style="font-size:26px">
+<%= @tc.description%>
+</div>
+<div class= "span4 offset1 kaiti"  style="font-size: 18px; text-align: right;">
+    <%= link_to "添加步骤", new_tcsp_path%>
+    <%= link_to_function '返回', "history.back()" %>
+</div>
+</div>
+<br/>
+<table class="table">
+    <tr class="kaiti">
+        <th>编号</th>
+        <th>步骤描述</th>
+        <th>操作类型</th>
+        <th>元素名称</th>
+        <th>调用方法</th>
+        <th>输入</th>
+        <th>输出</th>
+        <th>是否运行</th>
+    </tr>
+    <% if @steps != nil%>
+        <%@steps.each do |sp|%>
+                <tr>
+                    <td><%= best_in_place sp, :step%></td>
+                    <td class="kaiti"><%= best_in_place sp, :stepDesc%></td>
+                    <td><%= best_in_place sp, :stepMethod, type: :select, collection:[["ACTION","action"],["VERIFICATION","verification"],["CUSACTION","custom-action"],["CUSVERIFY","custom-verification"]]%></td>
+                    <td><%= best_in_place sp, :objName%></td>
+                    <td><%= best_in_place sp, :callMethod%></td>
+                    <td><%= best_in_place sp, :inputValue, :display_with=> lambda{|v| v.truncate(15)} %></td>
+                    <td><%= best_in_place sp, :expectValue, :display_with=> lambda{|v| v.truncate(15)} %></td>
+                    <td class="kaiti"><%= best_in_place sp, :runFlag, type: :select, collection: [["Y","运行"],["N","不运行"]]%></td>
+                </tr>
+        <%end%>
+    <%end%>
+    
+</table>
