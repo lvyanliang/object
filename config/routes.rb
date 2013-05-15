@@ -1,12 +1,24 @@
 AutoGomeUtil::Application.routes.draw do
   
+  get "run/start"
+
+  get "show/show_tkrp"
+
+  get "show/show_tcrp"
+  
   resources :tasks
+
+  resources :tasks do
+          resources :testcases, :controller => :tcs do
+                  resources :teststeps, :controller => :tcsp
+          end
+  end
 
   resources :testobjects
  
-  resources :testcases
- 
-  resources :teststeps       
+  resources :teststeps    
+  
+  resources :testcases   
  
   match 'tcs/:id' => 'tcs#show'
   
@@ -15,8 +27,21 @@ AutoGomeUtil::Application.routes.draw do
 #   
   # get 'tcsp/new' => 'tcsp#new'
   
+  match 'show/tkrp' => 'show#show_tksp'
+
+  match 'show/tcrp/:id' => 'show#show_tcrps'
+  
+  match 'show/tcrp/:tc_id/counter/:id' => "show#show_steps"
+  
   resources :tcsp
+  
    resources :runlists
+   
+   match 'run' => "run#start"
+   
+   match "check_machine" => "run#check_machine_situ"
+   
+   match "run_refer/:id" => "run#run_refer_task"
    
   # The priority is based upon order of creation:
   # first created -> highest priority.
