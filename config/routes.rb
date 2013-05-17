@@ -43,6 +43,16 @@ AutoGomeUtil::Application.routes.draw do
    
    match "run_refer/:id" => "run#run_refer_task"
    
+   match "run/smoketest" => "run#show_smoketest"
+   
+    match 'check_smma_situ' => "run#check_smma_situ"
+    
+    match 'run_pre_smoke' => "run#run_pre_smoke"
+    
+    match 'run_sit_smoke' => "run#run_sit_smoke"
+    
+    match 'run_uat_smoke' => "run#run_uat_smoke"
+   
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
