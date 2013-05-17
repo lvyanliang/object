@@ -34,24 +34,31 @@
         <tr>
             <td class="kaiti">预生产</td>
             <td class="kaiti">
+                <%if !session[10.57.4.30].nil?%>
                 <% if  session["10.57.4.30"].include?("PONG") %>
                     <%=  link_to "执行测试", run_pre_smoke_path %>
+                <%end%>
                 <%end%>
             </td>
         </tr>
         <tr>
             <td>SIT</td>
             <td class="kaiti">
+                                <%if !session[10.57.4.30].nil?%>
+
                 <% if  session["10.57.4.30"].include?("PONG") %>
                     <%=  link_to "执行测试", run_sit_smoke_path %>
+                <%end%>
                 <%end%>
             </td>
         </tr>    
             <tr>
             <td>UAT</td>
             <td class="kaiti">
+               <%if !session[10.57.4.30].nil?%>
                 <% if  session["10.57.4.30"].include?("PONG") %>
                     <%=  link_to "执行测试", run_uat_smoke_path %>
+                <%end%>
                 <%end%>
             </td>
         </tr>
