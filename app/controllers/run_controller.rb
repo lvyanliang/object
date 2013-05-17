@@ -44,17 +44,17 @@ class RunController < ApplicationController
    end
 
    def run_pre_smoke
-           system("staf 10.57.4.30 process start command ruby C:/DeployTest/DeployTest.rb >> 10.57.4.30.pre.log")
+           system("staf 10.57.4.30 process start command ruby C:/DeployTest/PreDeployTest.rb >> 10.57.4.30.pre.log")
                 redirect_to run_smoketest_path
    end
 
    def run_sit_smoke
-           system("staf 10.57.4.30 process start command ruby C:/DeployTest/DeployTest.rb >> 10.57.4.30.pre.log")
+           system("staf 10.57.4.30 process start command ruby C:/DeployTest/SitDeployTest.rb >> 10.57.4.30.pre.log")
                 redirect_to run_smoketest_path
    end
            
    def run_uat_smoke
-           system("staf 10.57.4.30 process start command ruby C:/DeployTest/DeployTest.rb >> 10.57.4.30.pre.log")
+           system("staf 10.57.4.30 process start command ruby C:/DeployTest/UatDeployTest.rb >> 10.57.4.30.pre.log")
                 redirect_to run_smoketest_path
    end
    
