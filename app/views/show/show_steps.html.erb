@@ -8,9 +8,7 @@
     </div>
 </h1>
 
-
 <table class="table">
-    
     <tr>
         <th>步骤编号</th>
         <th>运行时间</th>
@@ -19,7 +17,7 @@
         <th>实际结果</th>
         <th>步骤结果</th>
     </tr>
-    
+   
     <% if @results.first.nil? %>
         <tr><td class="kaiti" colspan="6">此次没有运行步骤</td></tr>
         <%else%>
@@ -34,5 +32,4 @@
         </tr>
         <% end %>
     <%end%>
-    
 </table>

@@ -1,0 +1,58 @@
+<h1 style="font-family: KaiTi">
+    <div class="container">
+        <div class="span6">
+                    <div class="span6  kaiti" style="font-size: 26px" >
+    测试任务列表
+    
+    </div>
+    </div>
+    <div class="span4 offset1" style="font-size: 18px; text-align: right;">
+         <%= link_to_function '返回', "history.back()" %>
+     </div>
+    </div>
+ </h1>
+ 
+ 
+ 
+<table class="table">
+        <tr>
+            <th>所在生产环境</th>
+            <th>操作执行</th>
+        </tr>
+        <tr><td class="kaiti">测试机器位置：10.57.4.30</td>
+            <td class="kaiti">
+                机器连接状态：
+                <%  if session["10.57.4.30"].nil? %>
+                    未检测 <%= link_to "检测", check_smma_situ_path%>
+                    <%elsif session["10.57.4.30"].include?("PONG")%>
+                        连通
+                    <%else%>
+                    需要检测目标机器STAF是否开启 <%= link_to "重新检测", check_smma_situ_path%>
+                <%end%>
+            </td>
+        </tr>
+        <tr>
+            <td class="kaiti">预生产</td>
+            <td class="kaiti">
+                <% if  session["10.57.4.30"].include?("PONG") %>
+                    <%=  link_to "执行测试", run_pre_smoke_path %>
+                <%end%>
+            </td>
+        </tr>
+        <tr>
+            <td>SIT</td>
+            <td class="kaiti">
+                <% if  session["10.57.4.30"].include?("PONG") %>
+                    <%=  link_to "执行测试", run_sit_smoke_path %>
+                <%end%>
+            </td>
+        </tr>    
+            <tr>
+            <td>UAT</td>
+            <td class="kaiti">
+                <% if  session["10.57.4.30"].include?("PONG") %>
+                    <%=  link_to "执行测试", run_uat_smoke_path %>
+                <%end%>
+            </td>
+        </tr>
+</table>

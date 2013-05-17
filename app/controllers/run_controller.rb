@@ -21,7 +21,8 @@ class RunController < ApplicationController
 
    def run_refer_task
           task = Task.find(params[:id])
-          system("staf #{task.runmachine} process start command ruby #{task.path}run.rb > #{task.runmachine}.run.log")
+          system("staf #{task.runmachine} var set shared var task=#{params[:id]} > #{task.runmachine}.run.log")
+          system("staf #{task.runmachine} process start command ruby #{task.path}run.rb >> #{task.runmachine}.run.log")
            File.open("#{task.runmachine}.run.log","r") do |f|
                    info = f.readlines.join
                    if info.downcase.include?("error")
@@ -29,7 +30,32 @@ class RunController < ApplicationController
                    end
            end
            redirect_to root_path
-           
    end
 
+  def  show_smoketest
+  end
+
+   def check_smma_situ
+           system("staf 10.57.4.30 ping ping > 10.57.4.30.log")
+           File.open("10.57.4.30.log", "r") do |f|
+                   session["10.57.4.30"] = f.readlines.join.gsub("\n","")
+           end
+           redirect_to run_smoketest_path
+   end
+
+   def run_pre_smoke
+           system("staf 10.57.4.30 process start command ruby C:/DeployTest/DeployTest.rb >> 10.57.4.30.pre.log")
+                redirect_to run_smoketest_path
+   end
+
+   def run_sit_smoke
+           system("staf 10.57.4.30 process start command ruby C:/DeployTest/DeployTest.rb >> 10.57.4.30.pre.log")
+                redirect_to run_smoketest_path
+   end
+           
+   def run_uat_smoke
+           system("staf 10.57.4.30 process start command ruby C:/DeployTest/DeployTest.rb >> 10.57.4.30.pre.log")
+                redirect_to run_smoketest_path
+   end
+   
 end
