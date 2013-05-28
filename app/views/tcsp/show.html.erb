@@ -6,7 +6,7 @@
 </div>
 <div class= "span4 offset1 kaiti"  style="font-size: 18px; text-align: right;">
     <%= link_to "添加步骤", new_tcsp_path%>
-    <a href = "/tcs/<%=session[:taskid] == nil ? 1 : session[:taskid] %>">返回</a>
+     <%= link_to_function '返回', "history.back()" %>
 </div>
 </div>
 <br/>
