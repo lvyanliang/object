@@ -1,5 +1,8 @@
 AutoGomeUtil::Application.routes.draw do
   
+  resources :users
+
+
   get "run/start"
 
   get "show/show_tkrp"

@@ -40,7 +40,7 @@ class RunController < ApplicationController
            File.open("10.57.4.30.log", "r") do |f|
                    session["10.57.4.30"] = f.readlines.join.gsub("\n","")
            end
-           redirect_to run_smoketest_path
+           redirect_to run_smoketest_path 
    end
 
    def run_pre_smoke

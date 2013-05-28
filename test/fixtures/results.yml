@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  runtime: 2013-05-15 16:09:16
+  teststep_id: 1
+  result: MyString
+  actualvalue: MyString
+  counter: 
+  testCaseName: MyString
+
+two:
+  runtime: 2013-05-15 16:09:16
+  teststep_id: 1
+  result: MyString
+  actualvalue: MyString
+  counter: 
+  testCaseName: MyString

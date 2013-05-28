@@ -1,10 +1,10 @@
- source 'https://rubygems.org'
+ # source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
 
 gem 'execjs'
 
-gem 'therubyracer'
+# gem 'therubyracer'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -30,6 +30,7 @@ gem 'jquery-rails'
 gem 'kaminari'
 
 gem 'best_in_place'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

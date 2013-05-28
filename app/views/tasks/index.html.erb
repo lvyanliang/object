@@ -20,6 +20,7 @@
     <th >任务描述</th>
     <th>运行机器地址</th>
     <th>运行时间</th>
+    <th>脚本路径</th>
     <th>机器状态</th>
     <th colspan="3" style="text-align: center"> 可执行操作</th>
   </tr>
@@ -29,6 +30,7 @@
     <td   class="kaiti"><%= best_in_place task, :name %></td>
     <td><%= best_in_place task, :runmachine %></td>
     <td><%= best_in_place task, :runtime, :display_with=>lambda {|v| v.strftime("%H:%M:%S")} %></td>
+    <td><%= best_in_place task, :path%></td>
      <td><%= session[task.runmachine].nil? ? "Unchecked" : (session[task.runmachine].include?("PONG") ? "Online" : "Offline")%></td>
     <td  class="kaiti"><%= link_to "展示关联用例", task_testcases_path(task)%></td>
     <td  style="font-family: KaiTi"><%= link_to '删除当前任务', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -44,9 +46,9 @@
   </tr>
 <% end %>
 </table>
-<h1 style="font-family: Kaiti">
+<!-- <h1 style="font-family: Kaiti">
     <div class="span5 offset6" style="font-size: 18px; text-align: right;">
         <%= link_to '全部运行', run_path %>
      </div>
-</h1>
+</h1> -->
 <br />
